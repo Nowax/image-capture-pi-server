@@ -29,7 +29,6 @@
     "flow-typed": "^2.5.1",
     "jimp": "^0.6.0",
     "node-webcam": "^0.4.6",
-    "nodemon": "^1.17.2",
     "upath": "^1.1.0"
   },
   "devDependencies": {
