@@ -18,7 +18,7 @@ let defaultOptions = {
 
     // [jpeg, png] support varies
     // Webcam.OutputTypes
-    output: 'png',
+    output: 'jpg',
 
     //Which camera to use
     //Use Webcam.list() for results
@@ -56,8 +56,7 @@ class ImageRecorder {
             jimp.read(data)
                 .then(image => {
                     return image
-                        .grayscale()
-                        .resize(640, 480)
+                        .scale(0.5)
                         .quality(60)
                         .write('temporary_image.jpg');
                 })
