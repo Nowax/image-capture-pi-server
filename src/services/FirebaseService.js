@@ -28,9 +28,9 @@ class FirebaseService {
                 destination: `${this.remoteDir}/${groupName}/${fileName}`,
                 metadata: {
                     metadata: {
-                        fileName: fileName,
-                    },
-                },
+                        fileName: fileName
+                    }
+                }
             })
             .then(file => {
                 console.log('Upload suceeded: ', normalizedPath);
@@ -40,12 +40,19 @@ class FirebaseService {
                 });
             })
             .then(url => {
-                return this.firestore.collection(groupName).add({
+                console.log('Signed URL retrieved');
+                let groupRef = this.firestore.collection(groupName);
+                console.log(groupRef);
+                console.log(fileName);
+                console.log(url[0]);
+                return groupRef.add({
                     fileName: fileName,
                     imageUrl: url[0]
                 });
             })
-            .then( () => console.log('Firestore updated suceeded'))
+            .then(doc => {
+                return console.log('Firestore updated suceeded');
+            })
             .catch(e => console.log('Upload error: ', e));
     }
 }

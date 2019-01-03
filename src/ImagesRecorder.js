@@ -6,8 +6,8 @@ const jimp = require('jimp');
 
 let defaultOptions = {
     //Picture related
-    width: 320,
-    height: 240,
+    width: 640,
+    height: 480,
     quality: 100,
 
     //Delay to take shot
@@ -18,7 +18,7 @@ let defaultOptions = {
 
     // [jpeg, png] support varies
     // Webcam.OutputTypes
-    output: 'jpg',
+    output: 'png',
 
     //Which camera to use
     //Use Webcam.list() for results
@@ -47,7 +47,7 @@ class ImageRecorder {
         while (true) {
             console.log('Reloop');
             this.captureImage();
-            await snooze(15 * 1000);
+            await snooze(30 * 1000);
         }
     }
 
@@ -56,8 +56,9 @@ class ImageRecorder {
             jimp.read(data)
                 .then(image => {
                     return image
-                        .scale(0.5)
-                        .quality(60)
+                        .scale(0.7)
+                        .brightness(0.2)
+                        .quality(80)
                         .write('temporary_image.jpg');
                 })
                 .then(() => {
