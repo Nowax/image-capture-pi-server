@@ -41,11 +41,9 @@ class FirebaseService {
             })
             .then(url => {
                 console.log('Signed URL retrieved');
-                let groupRef = this.firestore.collection(groupName);
-                console.log(groupRef);
                 console.log(fileName);
                 console.log(url[0]);
-                return groupRef.add({
+                return this.firestore.collection(groupName).add({
                     fileName: fileName,
                     imageUrl: url[0]
                 });
@@ -53,7 +51,10 @@ class FirebaseService {
             .then(doc => {
                 return console.log('Firestore updated suceeded');
             })
-            .catch(e => console.log('Upload error: ', e));
+            .catch(e => {
+                console.log('Upload error: ', e);
+                process.exit(1);
+            });
     }
 }
 

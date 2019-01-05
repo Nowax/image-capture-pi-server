@@ -75,7 +75,9 @@ class ImageRecorder {
     }
 
     generateRandomFileName(name) {
-        const todayUTC = dayjs().format('-YYYY-MM-DD--kk-mm-ss');
+        const todayUTC = dayjs()
+            .format('-YYYY-MM-DD--kk-mm-ss')
+            .replace(/--24/, '--00');
         return `${name}${todayUTC}.jpg`;
     }
 }
