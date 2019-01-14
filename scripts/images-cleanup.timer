@@ -1,0 +1,9 @@
+[Unit]
+Description=Google Storage clean up one per day runner
+
+[Timer]
+OnCalendar=*-*-* 3:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

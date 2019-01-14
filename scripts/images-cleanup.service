@@ -1,0 +1,9 @@
+[Unit]
+Description=Images Google Storage Cleanup service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/node /home/pi/workspace/image-capture-pi-server/scripts/cleanup.js
+
